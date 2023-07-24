@@ -8,7 +8,7 @@ class AvailabilitiesController < BaseController
       return render json: { errors: [e.message] }, status: :unprocessable_entity
     end
 
-    slots = AvailableSlotsGetter.call(@appointments)
+    slots = AvailableSlotsGetter.call(@appointments, params)
 
     render json: SlotTimeConverter.call(slots)
   end

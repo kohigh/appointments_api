@@ -12,6 +12,6 @@ RSpec.describe Appointment, type: :model do
 
     # others
     it { should validate_uniqueness_of(:day).scoped_to([:dentist_id, :slot]) }
-    it { should validate_numericality_of(:slot).only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(18) }
+    it { should validate_numericality_of(:slot).only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(20) }
   end
 end
