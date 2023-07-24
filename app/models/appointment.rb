@@ -9,7 +9,13 @@ class Appointment < ApplicationRecord
   validates :dentist_id, presence: true
   validates :patient_id, presence: true
   validates :day, presence: true
-  validates :slot, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 20 }
+  validates :slot,
+            presence: true,
+            numericality: {
+              only_integer: true,
+              greater_than_or_equal_to: SlotTimeConverter::MIN_SLOT,
+              less_than_or_equal_to: SlotTimeConverter::MAX_SLOT,
+            }
 
   validates :day, uniqueness: { scope: [:dentist_id, :slot] }
 end
