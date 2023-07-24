@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  it { should have_secure_token }
+
   describe 'associations' do
     it { should have_many(:dentist_appointments).class_name('Appointment').with_foreign_key('dentist_id').dependent(:destroy) }
     it { should have_many(:patient_appointments).class_name('Appointment').with_foreign_key('patient_id').dependent(:destroy) }
